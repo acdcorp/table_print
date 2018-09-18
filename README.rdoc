@@ -12,6 +12,15 @@ powerful features and how to use them.
 
 http://arches.io/tp_example.gif
 
+== ACDCORP versions
+We are hosting several gems that our projects are using because bundle requires
+them from the custom fork or original repo where they can get updates and crash our
+projects, therefore, every gem fork contains the following branch(es):
+
+  * fork-stable => Stable or initial branch from the fork
+  * x.x-acdcorp-stable => custom stable version
+  * master => continues development and tracking original repos
+
 == Installation
 
   # Install as a standalone gem
@@ -145,7 +154,7 @@ Since your CSV viewer probably already handles column widths for you, setting +m
 Use tp.set and tp.clear to set options on a class-by-class basis.
 
   tp.set User, :id, :email # now whenever you print users, the only columns shown will be id and email
-  
+
   > tp User.first
   ID | EMAIL
   ---|------------
@@ -176,7 +185,7 @@ You can also set global options:
   tp.set :max_width, 10 # columns won't exceed 10 characters
   tp.set :time_format, "%Y" # date columns will only show the year
   tp.set :capitalize_headers, false # don't capitalize column headers
-  
+
 You can redirect output:
 
   f = File.open("users.txt", "w")
@@ -184,7 +193,7 @@ You can redirect output:
   tp User.all # written to users.txt instead of STDOUT
   tp.clear :io
   tp User.all # writing to STDOUT again
-  
+
 === Multibyte
 
 Unfortunately, the current approach to finding the width of multibyte strings is too slow. If you're going to be
